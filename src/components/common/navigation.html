@@ -1,0 +1,167 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element" dropdown>
+                    <a class="dropdown-toggle" dropdown-toggle href>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <img class="logo" src="assets/images/logo.png" alt="Logo" width="150" />
+                            </span>
+                            <!-- <span class="text-muted text-xs block">Example menu<b class="caret"></b></span> -->
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li>
+                            <a href="">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    B-Buzz
+                </div>
+            </li>
+            <li>
+                <a ui-sref="dashboard">
+                    <i class="fa fa-tachometer"></i>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+            </li>
+            </li>
+            <li ng-class="{active: $state.includes('merchant')}">
+                <a>
+                    <i class="fa fa-gavel"></i>
+                    <span class="nav-label">Merchants</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('merchant')}">
+                    <li ui-sref-active="">
+                        <a ui-sref="merchant">List</a>
+                    </li>
+                    <li ui-sref-active="">
+                        <a ui-sref="merchant.create">Create</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: $state.includes('category')}">
+                <a>
+                    <i class="fa fa-gavel"></i>
+                    <span class="nav-label">Category</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('category')}">
+                    <li ui-sref-active="">
+                        <a ui-sref="category">List</a>
+                    </li>
+                    <li ui-sref-active="">
+                        <a ui-sref="category.create">Create</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: $state.includes('members')}">
+                <a>
+                    <i class="fa fa-users"></i>
+                    <span class="nav-label">Users</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('customers')}">
+                    <li ui-sref-active="">
+                        <a ui-sref="members">List</a>
+                    </li>
+                    <!-- <li ui-sref-active=""><a ui-sref="members.create">Create</a></li> -->
+                </ul>
+            </li>
+            <li ng-class="{active: $state.includes('deals')}">
+                <a>
+                    <i class="fa fa-bullhorn"></i>
+                    <span class="nav-label">Deals</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('deals')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="deals">List</a>
+                    </li>
+                    <li ui-sref-active="">
+                        <a ui-sref="deals.create">Create</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-class="{active: $state.includes('procategory')}">
+                <a>
+                    <i class="fa fa-search"></i>
+                    <span class="nav-label">Find a Pro</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('procategory')}">
+                    <li ui-sref-active="">
+                        <a ui-sref="procategories">Create Pro Category</a>
+                    </li>
+                    <li ui-sref-active="">
+                        <a ui-sref="prosubprocategories">Create Pro Sub-category</a>
+                    </li>
+                    <li ui-sref-active="">
+                        <a ui-sref="prousers">Pro Service Providers</a>
+                    </li>
+                    <!-- <li ui-sref-active="">
+                                    <a ui-sref="procategories.createproSub">Pro Create Sub-Category</a>
+                                </li> -->
+                    <li ui-sref-active="">
+                        <a ui-sref="allbanners">eBillboards</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-class="{active: $state.includes('brags')}">
+                <a>
+                    <i class="fa fa-tags"></i>
+                    <span class="nav-label">Brags</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('brags')}">
+                    <li ui-sref-active="">
+                        <a ui-sref="brags">List</a>
+                    </li>
+                    <!-- <li ui-sref-active=""><a ui-sref="brags.create">Create</a></li> -->
+                </ul>
+            </li>
+            <li ng-class="{active: $state.includes('helpcenter')}">
+                <a>
+                    <i class="fa fa-tags"></i>
+                    <span class="nav-label">Settings</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('helpcenter.create')}">
+                    <li ui-sref-active="">
+                        <!--       <a ui-sref="category">Helpcenter</a> -->
+                    </li>
+                    <li ui-sref-active="">
+                        <!-- <a ui-sref="members.create">Profile</a> -->
+                        <a ui-sref="faq">FAQ's</a>
+                        <a ui-sref="termspolicy">Terms & Policy</a>
+                        <a ui-sref="support">Customer Support</a>
+                        <a ui-sref="aboutus">About us</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: $state.includes('helpcenter')}">
+                <a>
+                    <i class="fa fa-tags"></i>
+                    <span class="nav-label">Notifications</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('helpcenter.create')}">
+                    <li ui-sref-active="">
+                        <!--       <a ui-sref="category">Helpcenter</a> -->
+                    </li>
+                    <li ui-sref-active="">
+                        <!-- <a ui-sref="members.create">Profile</a> -->
+                        <a ui-sref="dealnotification">Deal Notification</a>
+                        <a ui-sref="pronotification">Pro Notification</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>

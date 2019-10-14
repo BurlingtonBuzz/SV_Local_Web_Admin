@@ -1,0 +1,154 @@
+<div class="row" ng-repeat="getOrder in getOrders">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content p-xl">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <address>
+                            <h4 class="text-navy">Order Id : {{getOrder.id}}</h4>
+                            <strong>Customer Number : {{getOrder.userId | userName}}</strong><br/>
+                            <strong>Status : {{getOrder.orderStatus | orderGetStatus}}</strong>
+                        </address>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <h4 class="text-navy">Order Date : {{getOrder.orderdate | date:'medium'}}</h4>
+                    </div>
+                </div>
+                <div class="table-responsive m-t order-style">
+                    <div class="col-sm-6 order-first">
+                        <div class="customer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="text-navy">Customer Address</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div></div>
+                                <div class="col-sm-6">
+                                    <h5>Pickup Address:</h5>
+                                    <address>
+                                        <strong><span ng-if="getOrder.pickupAddress.doorNoFlatNo">DoorNo/FlatNo : {{getOrder.pickupAddress.doorNoFlatNo}}<br></span>
+                                        <span ng-if="getOrder.pickupAddress.address">Address: {{getOrder.pickupAddress.address}}<br></span>
+                                         <span ng-if="getOrder.pickupAddress.street">Street: {{getOrder.pickupAddress.street}}<br></span>
+                                         <span ng-if="getOrder.pickupAddress.area">Area: {{getOrder.pickupAddress.area}}<br></span>
+                                         <span ng-if="getOrder.pickupAddress.city">City: {{getOrder.pickupAddress.city}}<br></span>
+                                         <span ng-if="getOrder.pickupAddress.landmark">Landmark: {{getOrder.pickupAddress.landmark}}<br></span>
+                                         <span ng-if="getOrder.pickupAddress.pincode">Pincode: {{getOrder.pickupAddress.pincode}}<br></span>
+                                         <span ng-if="getOrder.pickupdate">Pickup date: {{getOrder.pickupdate | date:'medium'}}<br></span>
+                                         <span ng-if="getOrder.pickuptimeSlotId">Pickup time Slot: {{getOrder.pickuptimeSlotId | timeSlot}}<br></span></strong>
+                                    </address>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <h5>Delivery Address:</h5>
+                                    <address>
+                                        <strong><span ng-if="getOrder.deliveryAddress.doorNoFlatNo">DoorNo/FlatNo : {{getOrder.deliveryAddress.doorNoFlatNo}}<br></span>
+                                        <span ng-if="getOrder.deliveryAddress.address">Address: {{getOrder.deliveryAddress.address}}<br></span>
+                                         <span ng-if="getOrder.deliveryAddress.street">Street: {{getOrder.deliveryAddress.street}}<br></span>
+                                         <span ng-if="getOrder.deliveryAddress.area">Area: {{getOrder.deliveryAddress.area}}<br></span>
+                                         <span ng-if="getOrder.deliveryAddress.city">City: {{getOrder.deliveryAddress.city}}<br></span>
+                                         <span ng-if="getOrder.deliveryAddress.landmark">Landmark: {{getOrder.deliveryAddress.landmark}}<br></span>
+                                         <span ng-if="getOrder.deliveryAddress.pincode">Pincode: {{getOrder.deliveryAddress.pincode}}<br></span>
+                                         <span ng-if="getOrder.deliverydate">Delivery date : {{getOrder.deliverydate | date:'medium'}}<br></span>
+                                         <span ng-if="getOrder.deliverytimeSlotId">Delivery time Slot: {{getOrder.deliverytimeSlotId | timeSlot}}<br></span></strong>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <address>
+                                        <h4 class="text-navy">Payment</h4>
+                                        <strong>Customer Number : {{getOrder.userId | userName}}</strong>
+                                    </address>
+                                </div>
+                            </div>
+                            <p ng-if="getOrder.orderpayment.totalprice">Total Amount : &#8377; &#8377; {{getOrder.orderpayment.totalprice}}</p>
+                            <p>Status : Paid</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 order-second">
+                        <div class="order">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="text-navy">Order Details</h4>
+                                </div>
+                            </div>
+                            <table class="table invoice-table">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Quantity</th>
+                                        <th>Extra Services</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="order in getOrder.payload">
+                                        <td>
+                                            <div><strong>{{order.name}}</strong></div>
+                                        </td>
+                                        <td>{{order.quantity}}</td>
+                                        <td><strong>Stain :</strong> {{order.extraservices.stain | boolStatusChange}}<br>
+                                            <strong>Starch :</strong> {{order.extraservices.starch | boolStatusChange}}
+                                        </td>
+                                        <td>&#8377; {{order.price}}</td>
+                                        <td>&#8377; {{order.price * order.quantity }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table invoice-total">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Sub Total :</strong></td>
+                                        <td>&#8377; {{getOrder.orderpayment.subtotal}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Coupon :</strong></td>
+                                        <td>&#8377; {{getOrder.orderpayment.discount}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>TOTAL :</strong></td>
+                                        <td>&#8377; {{getOrder.orderpayment.totalprice}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 status">
+                            <div class="col-sm-6">
+                                <address>
+                                    <h4 class="text-navy">Order Status</h4>
+                                    <strong>Type Of Delivery : {{getOrder.typeofDelivery}}</strong>
+                                    <br/>
+                                </address>
+                            </div>
+                            <div class="col-sm-6 text-right">
+
+                                <address>
+                                </address>
+                            </div>
+                            <table class="table invoice-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Status</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="status in getOrder.status">
+                                        <td>
+                                            <div><strong>{{status.status | getOrderStatus}} </strong></div>
+                                            <div><strong>{{status.status | getUserOrderStatus}} </strong></div>
+                                        </td>
+                                        <td>{{status.timestamp | date:'medium'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

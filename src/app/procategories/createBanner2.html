@@ -1,0 +1,63 @@
+<div class="wrapper wrapper-content animated fadeIn ecommerce">
+    <div class="ibox-content">
+        <br />
+        <form name="myProduct">
+            <fieldset class="form-horizontal">
+                <!-- Product Gallery Images -->
+                <div class="ibox-title">
+                    <div class="row">
+                        <div class="pull-right" style="margin-right: 2%;">
+                            <button class="btn btn-info" type="button"
+                                ui-sref="procategories.createBanner">Create</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" class="infont col-lg-8">
+
+                    <div class="col-sm-12" style="margin-bottom: 3%;">
+
+                        <table ng-if="imgobj.length" datatable="ng" dt-options="dtOptions"
+                            class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Sequence Number</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="images in imgobj">
+                                    <td>
+                                        <img ng-src="{{baseurlimg}}{{images.imageURL}}" class="image_size">
+                                    </td>
+                                    <td>
+                                        {{images.index}}
+                                    </td>
+                                    <td>
+                                        <button type="button" ng-click="createBanner2.edit(images.id)"
+                                            class="btn btn-primary btn-xs">Edit</button>
+                                        <button type="button" ng-click="delete(images.id)"
+                                            ng-confirm-click="Do you want to delete Banner"
+                                            class="btn btn-danger btn-xs">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <span ng-show="showimage" class="showImges" ng-repeat="images in imgobj">
+                                 <img ng-src="{{baseurlimg}}{{images.imageURL}}" class="image_size"> 
+                                 <button class="btn btn-danger btn-box close_img"  ng-click='deleteimg($index)'>X</button>  
+                         </span> -->
+                    </div>
+                </div>
+                <!-- Product Gallery Images -->
+                <!-- <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button class="btn btn-w-m btn-danger" ng-click="cancle()">Cancel</button>
+                        <button type="button" class="btn btn-w-m btn-primary" ng-click="save()">Save</button>
+                    </div>
+                </div> -->
+            </fieldset>
+        </form>
+    </div>
+</div>

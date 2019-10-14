@@ -1,0 +1,58 @@
+<style>
+    .abovefive {
+        font-size: 20px;
+        color: red;
+        text-align: center;
+        padding: 15px 0px;
+    }
+</style>
+<div class="wrapper wrapper-content animated fadeIn ecommerce">
+    <div class="ibox-content">
+        <br />
+        <form name="myProduct">
+            <fieldset class="form-horizontal">
+                <!-- Product Gallery Images -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">eBillboard Gallery</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Banner</label>
+                                <input type="file" ng-model="dealsimage" file-model="dealAddPhoto" accept=".png,.jpg"
+                                    ng-trim="true" class="form-control" nv-file-select="" uploader="dealPhoto">
+                                <div ng-repeat="item in dealPhoto.queue">
+                                    <div nowrap style="padding-left: 0px;">
+                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
+                                            ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            <span class="glyphicon glyphicon-upload"></span> Upload
+                                        </button>
+                                        <span ng-show="item.isSuccess">Image Successfully Uploaded </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <br />
+                                <br />
+                                <label>Banner Sequence</label>
+                                <input type="number" min="0" max="5" maxlength="1" size="1" step="1"
+                                    ng-model="bannernumber" class="form-control" />
+                            </div>
+                            <div class="col-md-12">
+                                <br />
+                                <br />
+                                <a ng-click="addbannertolive()" class="btn btn-success">Add Banner</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </fieldset>
+            <div class="abovefive">
+                <div class="">{{errormessage}}</div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="wrapper wrapper-content  animated">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="row">
+                        <div class="pull-right" style="margin-right: 2%;">
+                            <button class="btn btn-info" type="button" ui-sref="deals.create">Create</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" dt-options="dtOptions"
+                        class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <!-- <th>Deal ID</th> -->
+                                <th>Merchant Name</th>
+                                <th>Deal Title</th>
+                                <th>Redemption Code</th>
+                                <th>start Date</th>
+                                <th>End Date</th>
+                                <th>Redeems</th>
+                                <th>Views</th>
+                                <th>Shares</th>
+                                <th>Favorites</th>
+                                <th>is Active</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="deal in deals.result.list">
+                                <!--{{deals.result.list}}-->
+                                <!-- <td>
+                                    {{deal.id}}
+                                </td> -->
+                                <td>{{deal.merchant.name}}</td>
+                                <td>{{deal.title}} </td>
+                                <td>{{deal.redeemCode}}</td>
+                                <td>{{deal.startDate | date: "MM/dd/yyyy"}}</td>
+                                <td>{{deal.endDate | date: "MM/dd/yyyy"}}</td>
+                                <td>{{deal.redeemCount}} </td>
+                                <td>{{deal.viewCount}}</td>
+                                <td>{{deal.shareCount}}</td>
+                                <td>{{deal.favouriteCount}}</td>
+                                <td>
+
+                                    <button type="button" class="btn-switch-on" ng-if="deal.isactive"
+                                        ng-click="switchActiveInactive($index,false)"> Active</button>
+                                    <button type="button" class="btn-switch-off" ng-if="!deal.isactive"
+                                        ng-click="switchActiveInactive($index,true)"> Inactive</button>
+                                </td>
+                                <td>
+                                    <button type="button" ng-click="edit(deal.id)"
+                                        class="btn btn-primary btn-xs">Edit</button>
+                                    <button type="button" ng-click="delete(deal.id)"
+                                        ng-confirm-click="Do you want to delete Deal : {{deal.title}}"
+                                        class="btn btn-danger btn-xs">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .container {
+        width: 50px;
+        margin: 50px auto;
+    }
+
+    .btn-switch {
+        position: relative;
+        display: block;
+        width: 50px;
+        height: 30px;
+        cursor: pointer;
+        background-color: #F27878;
+        border: 2px solid #F27878;
+        border-radius: 40px;
+    }
+
+    .btn-switch-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 25px;
+        width: 25px;
+        background-color: #fff;
+        border-radius: 40px;
+    }
+
+
+    .btn-switch--on {
+        background-color: #80CDBE;
+        border: 2px solid #80CDBE;
+    }
+
+    .btn-switch-circle--on {
+        left: auto;
+        right: 0;
+    }
+</style>

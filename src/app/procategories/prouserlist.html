@@ -1,0 +1,47 @@
+<div class="wrapper wrapper-content  animated">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="row">
+                        <div class="pull-right" style="margin-right: 2%;">
+                            <button class="btn btn-info" type="button" ui-sref="prousers.create">Create</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" dt-options="dtOptions"
+                        class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <!--<th>Deal ID</th> -->
+                                <th>Name</th>
+                                <th>Contact No</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Sub category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in userList">
+                                <td>{{user.name}}</td>
+                                <td>{{user.contactNo}}</td>
+                                <td>{{user.description}}</td>
+                                <td>{{user.procategories.name}}</td>
+                                <td>{{user.prosubcategories.name}}</td>
+                                <td>
+                                    <button type="button" ng-click="edit(user.id)"
+                                        class="btn btn-primary btn-xs">Edit</button>
+                                    <button type="button" ng-click="delete(user.id)"
+                                        ng-confirm-click="Do you want to delete pro merchants : {{user.name}}"
+                                        class="btn btn-danger btn-xs">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

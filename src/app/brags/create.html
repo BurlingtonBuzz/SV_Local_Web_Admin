@@ -1,0 +1,120 @@
+<div class="wrapper wrapper-content animated fadeIn ecommerce">
+    <div class="ibox-content">
+        <form name="myRegion">
+            <fieldset class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Mobile No</label>
+                    <div class="col-sm-10">
+                        <input type="text" only-digits max="10" name="mobileno" ng-model="member.username" ng-pattern="regEx" placeholder="Ex : 9855514371"
+                            class="form-control ng-pristine ng-valid" ng-trim="true">
+                        <span ng-show="myRegion.mobileno.$error.pattern" style="color:red">Mobile number should allow 10 numbers.</span>
+                        <span class="text-danger ng-binding">{{errorsinp.username}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" ng-model="member.password" placeholder="Enter Password" />
+                        <span class="error">{{errorsinp.password}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Full Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="Full Name" ng-model="member.fullName" placeholder="Enter Name" />
+                        <span class="error">{{errorsinp.fullName}}</span>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Designation</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="Designation" ng-model="member.designation" placeholder="Enter Designation" />
+                        <span class="error">{{errorsinp.designation}}</span>   
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Mobile No</label>
+                    <div class="col-sm-10">
+                        <input type="text" only-digits max="10" class="form-control" name="mobileNo" ng-model="member.mobileno" placeholder="Enter Alternate Contact"
+                        />
+                        <span class="error">{{errorsinp.mobileno}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Landline No</label>
+                    <div class="col-sm-10">
+                        <input type="text" only-digits max="6" class="form-control" name="landline" ng-model="member.landline" placeholder="Enter landline no"
+                        />
+                        <span class="error">{{errorsinp.landline}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Address</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" ng-model="member.address" placeholder="Enter Address" role="2" />                        </textarea>
+                        <span class="error">{{errorsinp.address}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>dob</label>
+                    <div class="col-sm-3">
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input ng-model="member.dob" type="text" placeholder="Select Date" class="form-control ng-pristine ng-valid" ng-readonly="true"
+                            />
+                            <br/>
+                        </datepicker>
+                        <!--<md-datepicker ng-model="wareHouseModel.dob"></md-datepicker>   -->
+                        <span class="text-danger ng-binding" style="width: 100%;float: left;">{{errorsinp.dob}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name="email" ng-model="member.email" placeholder="Enter Email" />
+                        <span class="error">{{errorsinp.email}}</span>
+                    </div>
+                </div>
+                <!-- image start here -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-10">
+                        <input type="file" ng-model="member.imageURL" file-model="driverAddPhoto" ng-trim="true" class="form-control" nv-file-select=""
+                            uploader="driverPhoto" id="img">
+                        <div id="driver_Photograph" class="delete" ng-show="DPhotogetImage" ng-if="member.imageURL">
+                            <span><a class="close_icon1" style="position: absolute;left: 0px; top: 13px;" ng-click="driver_Photograph();">X</a>  
+                            <img class="img-thumbnail" ng-src="{{baseurlimg}}{{member.imageURL}}" alt="Image" width="100" style="margin-top: 2%;" /> 
+                            </span>
+                        </div>
+                        <div class="col-lg-12" style="padding: 0px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in driverPhoto.queue">
+                                        <td nowrap style="padding-left: 0px;">
+                                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            <span class="glyphicon glyphicon-upload"></span> Upload
+                                        </button>
+                                            <span ng-show="item.isSuccess">Image Successfully Uploaded </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- image End here -->
+                <div class="form-group">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success" ng-click="save(member)">Submit</button>
+                        <button type="button" class="btn btn-danger" ng-click="cancel();">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,172 @@
+<div class="wrapper wrapper-content animated fadeIn ecommerce">
+    <div class="ibox-content">
+        <form novalidate="novalidate" ng-submit="valid.onSubmit()">
+            <fieldset class="form-horizontal">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Deal Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="Title" ng-maxlength="140" ng-minlength="3" ng-model="deals.title" placeholder="Enter Title"
+                                />
+                                <!-- <span class="error">{{errorsinp.title}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- ng-if="deals.codeExists" -->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                Redeem Code</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="RedeemCode" ng-model="deals.redeemCode" placeholder="Enter RedeemCode" />
+                                <!-- <span class="error">{{errorsinp.redeemCode}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Description</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" name="Description" ng-model="deals.description" placeholder="Enter Description"
+                                    role="2"> </textarea>
+                                <span class="error">{{errorsinp.description}}</span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Merchant</label>
+                            <div class="col-sm-10">
+                                <sc-select ng-change="update(deals.merchantId);" ng-model="deals.merchantId" sc-options="listmerchants.id as listmerchants.name for listmerchants in listMerchant"
+                                    ng-change="getmerchants(deals.merchantId)" placeholder="Select or search Merchant">
+                                </sc-select>
+                                <!-- <span class="error">{{errorsinp.merchantId}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Category</label>
+                            <div class="col-sm-10">
+
+                                <sc-select ng-model="deals.categoryId" sc-options="listcategorys.id as listcategorys.name for listcategorys in listCategory"
+                                    placeholder="Select or search Category" ng-change="update(deals.merchantId)">
+                                </sc-select>
+                                <!-- <span class="error">{{errorsinp.categoryId}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>code Exists</label>
+                            <div class="col-sm-6">
+
+                                <input ng-model="deals.codeExists" name="codeExists" type="checkbox" placeholder="" class="form-control ng-pristine ng-valid"
+                                />
+
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div> -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Start Date</label>
+                            <div class="col-sm-6">
+                                <datepicker date-format="yyyy-MM-dd">
+                                    <input ng-model="deals.startDate" name="startDate" type="text" placeholder="" class="form-control ng-pristine ng-valid" />
+                                    <br/>
+                                </datepicker>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>End Date</label>
+                            <div class="col-sm-6">
+                                <datepicker date-format="yyyy-MM-dd">
+                                    <input ng-model="deals.endDate" type="text" placeholder="Select end Date" class="form-control ng-pristine ng-valid" />
+                                    <br/>
+                                </datepicker>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- image start here -->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Image</label>
+
+                            <div class="col-sm-10">
+                                <input type="file" ng-model="deals.images" file-model="dealAddPhoto" accept=".png,.jpg" ng-trim="true" class="form-control"
+                                    nv-file-select="" uploader="dealPhoto">
+                                <div id="deals_Photograph" ng-repeat="deal in images" class="delete" ng-show="DPhotogetImage" ng-if="images">
+                                    <span>
+                                        <img class="img-thumbnail" ng-src="{{baseurlimg}}{{deal}}" alt="Image" width="100" /> </br>
+                                        <span ng-click="removeImg($index)">Remove</span>
+                                    </span>
+                                </div>
+                                <div class="col-lg-12" style="padding: 0px;">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in dealPhoto.queue">
+                                                <td nowrap style="padding-left: 0px;">
+                                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    <span ng-show="item.isSuccess">Image Successfully Uploaded </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- image End here -->
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success" ng-click="save(deals)">Submit</button>
+                        <button type="button" class="btn btn-danger" ng-click="cancel();">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

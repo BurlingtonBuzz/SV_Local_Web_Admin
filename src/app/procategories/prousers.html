@@ -1,0 +1,130 @@
+<div class="wrapper wrapper-content animated fadeIn ecommerce">
+    <div class="ibox-content">
+        <form novalidate="novalidate" ng-submit="valid.onSubmit()">
+            <fieldset class="form-horizontal">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Pro-Category</label>
+                            <div class="col-sm-10">
+                                <sc-select ng-model="prosubcategory.procategoryId"
+                                    sc-options="listprocategories.id as listprocategories.name for listprocategories in listprocategories"
+                                    ng-change="changeCategory(prosubcategory.procategoryId)"
+                                    placeholder="Select or search Pro-Category" ng-change="changeCategory()">
+                                </sc-select>
+                                <!-- <span class="error">{{errorsinp.merchantId}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Pro Sub-Category</label>
+                            <div class="col-sm-10">
+
+                                <select class="form-control" ng-model="prosubcategory.prosubcategoryId"
+                                    ng-options="listproSubCategory.id as listproSubCategory.name for listproSubCategory in listprosubByIdcategories">
+                                </select>
+                                <!-- <sc-select  ng-model="prosubcategory.prosubcategoryId" sc-options="listproSubCategory.id as listproSubCategory.name for listproSubCategory in listprosubByIdcategories"
+                                         placeholder="Select or search Pro-Category" >
+                                </sc-select> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Service Provider Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="Title" ng-maxlength="140" ng-minlength="3"
+                                    ng-model="prosubcategory.name" placeholder="Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Contact No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="Title" ng-maxlength="140" ng-minlength="3"
+                                    ng-model="prosubcategory.contactNo" placeholder="ContactNo" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-6">
+                        <label class="col-sm-2 control-label">
+                            <span class="red">*</span>Image</label>
+                        <div class="col-sm-10">
+                            <input type="file" ng-model="prosubcategory.image" file-model="dealAddPhoto"
+                                accept=".png, .jpg" ng-trim="true" class="form-control" nv-file-select=""
+                                uploader="dealPhoto">
+                            <div id="deals_Photograph" class="delete" ng-show="DPhotogetImage"
+                                ng-if="prosubcategory.image">
+                                <span>
+                                    <!-- <a class="close_icon1" style="position: absolute;left: 0px; top: 13px;" ng-click="deals_Photograph();">X</a> -->
+                                    <img ng-src="{{baseurlimg}}{{prosubcategory.image}}" alt="Image" width="100"
+                                        style="margin-top: 2%;" />
+                                    <span ng-click="removeImg($index)">Remove</span>
+                                </span>
+                            </div>
+                            <div class="col-lg-6" style="padding: 0px;">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in dealPhoto.queue">
+                                            <td nowrap style="padding-left: 0px;">
+                                                <button type="button" class="btn btn-success btn-xs"
+                                                    ng-click="item.upload()"
+                                                    ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                                </button>
+                                                <span ng-show="item.isSuccess">Image Successfully Uploaded </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                <span class="red">*</span>Special Offer</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="Title" ng-maxlength="140" ng-minlength="3"
+                                    ng-model="prosubcategory.description" placeholder="Description" /> </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span class="red">*</span>Category</label>
+                    <div class="col-sm-10">
+                        <sc-select ng-model="deals.categoryId" sc-options="listcategory.id as listcategory.name for listcategory in listCategory"
+                            ng-change="getmerchants(deals.categoryId)" placeholder="Select or search Category">
+                        </sc-select>
+                        <span class="error">{{errorsinp.categoryId}}</span>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success" ng-click="save(prosubcategory)"
+                            ng-if="!sending">Submit</button>
+                        <button type="button" class="btn btn-success" disabled="true"
+                            ng-if="sending">Sending.....</button>
+                        <button type="button" class="btn btn-danger" ng-click="cancel();">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

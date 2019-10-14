@@ -1,0 +1,94 @@
+<div class="wrapper wrapper-content  animated">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div class="row">
+                        <!-- <div class="pull-right" style="margin-right: 2%;">
+                            <button class="btn btn-info" type="button" ui-sref="members.create">Create</button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="tab-pane active" id="tab_a">
+                        <button class="btn btn-link pull-right" ng-click="exportToExcel('#tableToExport')">
+                            <span class="glyphicon glyphicon-share"></span>
+                            Export to Excel
+                        </button>
+                        <br>
+
+                    </div>
+                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <!-- <th>UserID</th> -->
+                                <th>Username</th>
+                                <th>Full Name</th>
+                                <th>Mobile Number</th>
+                                <th>E-Mail</th>
+                                <!-- <th>Actions</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users.result.list">
+                                <!--{{users.result.list}}-->
+                                <!-- <td>
+                                    {{user.id}}
+                                </td> -->
+                                <td>
+                                    {{user.username}}
+                                </td>
+                                <td>
+                                    {{user.name}}
+                                </td>
+                                <td>
+                                    {{user.mobileNumber| tel}}
+                                </td>
+                                <td>
+                                    {{user.email}}
+                                </td>
+                                <!-- <td>
+                                    <button type="button" ng-click="edit(user.id)" class="btn btn-primary btn-xs">Edit</button>
+                                    <button type="button" ng-click="delete(user.id)" ng-confirm-click="Do you want to delete member : {{user.name}}" class="btn btn-danger btn-xs">Delete</button>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div >
+                        <h1 ng-hide="true">BBuzz Users List</h1>
+                        <table ng-hide="true"  id="tableToExport">
+                            <thead>
+                                <tr>
+
+                                    <th>Username</th>
+                                    <th>Full Name</th>
+                                    <th>Mobile Number</th>
+                                    <th>E-Mail</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in users.result.list">
+
+                                    <td>
+                                        {{user.username}}
+                                    </td>
+                                    <td>
+                                        {{user.name}}
+                                    </td>
+                                    <td>
+                                        {{user.mobileNumber| tel}}
+                                    </td>
+                                    <td>
+                                        {{user.email}}
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

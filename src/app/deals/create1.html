@@ -1,0 +1,81 @@
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="wizard-container">
+                    <div id="wizard-step-container">
+                        <ul class="nav nav-pills nav-justified">
+                         
+                            <!-- <li ng-class="{'active':false}">
+                                <a ui-sref="village.policestation({id:stateParams.id,mandalId:stateParams.mandalId})">Police Stations</a>
+                            </li> -->
+                       
+                        </ul>
+                    </div>
+                    <div id="wizard-content-container">
+                        <form role="form" ng-submit="onSubmitAds(userForm.$valid)" novalidate>
+                            <div class="col-sm-12">
+                                <fieldset class="form-horizontal">
+                                    <div class="col-sm-9">
+                                       
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label"><span class="red">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type='text' class='form-control' googleplace ng-model='startpoint' placeholder='Search Area'>
+                                                <ng-map zoom="13" center="{{startpoint}}" map-type-id="ROADMAP" street-view-control-options="{position: 'LEFT_CENTER'}" style="height:700px">
+                                                    <drawing-manager on-overlaycomplete="onMapOverlayCompleted()" drawing-control-options={{drawing_control_options}} drawingControl="true" drawingMode="null" markerOptions="{icon:'www.example.com/icon'}" rectangleOptions="{fillColor:'red'}" polygonOption="{fillColor:'red'}"
+                                                        circleOptions="{fillColor: 'red',fillOpacity: 1,strokeWeight: 5,clickable: false,zIndex: 1,editable:false}">
+                                                    </drawing-manager>
+                                                    <div>
+                                                        <shape name="polygon" paths="{{getgeoFencing}}" stroke-color="#086d04" stroke-opacity="0.8" stroke-weight="2" fill-color="green" fill-opacity="0.35">
+                                                        </shape>
+                                                    </div>
+                                                </ng-map>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label"><span class="red"> </span></label>
+                                            <div class="col-sm-9">
+                                                <button type="reset" class="btn btn-danger" onclick="javascript: window.history.go(-1)">
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" name="submit" value="submit" class="btn btn-primary">
+                                                     Save
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #wizard-step-container {
+        margin: 20px 0;
+    }
+    
+    #wizard-content-container {
+        margin: 20px 0;
+    }
+    
+    #wizard-navigation-container {
+        border-top: 1px solid #eee;
+        margin: 20px 0;
+        padding-top: 20px;
+    }
+</style>
+
+
+<style>
+    .pac-container.pac-logo {
+        width: 937px;
+        left: 28%!important;
+        top: 34%!important;
+    }
+</style>

@@ -1,0 +1,28 @@
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="form-container">
+        <img src="assets/images/logo.png" alt="Logo" width="250" />
+        <form class="m-t" role="form" ng-submit="onSubmit()">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input type="text" ng-model="login.username" class="form-control1" placeholder="User Name" required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                    <input type="password" ng-model="login.password" class="form-control1" placeholder="Password" required="true">
+                    <!--   <span class="text-danger ng-binding">{{errorsinp.password}}</span>  -->
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+            <span class="text-white ng-binding">{{errorLogin}}</span>
+        </form>
+    </div>
+</div>
+<style type="text/css">
+    html,
+    body {
+        height: 100%!important;
+    }
+</style>
